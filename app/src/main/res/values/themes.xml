@@ -6,4 +6,9 @@
     </style>
 
     <style name="Theme.BestLocationsEmnaBouaouina" parent="Base.Theme.BestLocationsEmnaBouaouina" />
+
+    <style name="Base.Theme.MonApp" parent="Theme.Material3.Light.NoActionBar">
+        <item name="colorPrimary">#6C63FF</item>
+    </style>
+
 </resources>

@@ -5,31 +5,98 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg_gradient"
+    android:gravity="center"
     android:orientation="vertical"
-    android:padding="30dp"
+    android:padding="24dp"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Demande position"
-        android:textAlignment="viewStart"
-        android:textSize="34sp"
-        android:textStyle="bold" />
+    <!-- Icône en haut -->
+    <ImageView
+        android:layout_width="88dp"
+        android:layout_height="88dp"
+        android:background="@drawable/bg_circle_icon"
+        android:padding="22dp"
+        android:src="@android:drawable/ic_menu_mylocation"
+        app:tint="@android:color/white"
+        android:contentDescription="Icône de localisation" />
 
-    <EditText
-        android:id="@+id/edPhoneNumber"
+    <!-- Carte principale -->
+    <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Saisir un numéro"
-        android:inputType="phone" />
+        android:layout_marginTop="28dp"
+        app:cardBackgroundColor="@android:color/white"
+        app:cardCornerRadius="28dp"
+        app:cardElevation="10dp">
 
-    <Button
-        android:id="@+id/btnSendNumber"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Envoyer SMS" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="24dp">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Demande position"
+                android:textAlignment="center"
+                android:textColor="#1F2937"
+                android:textSize="28sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Entrez le numéro de la personne pour lui demander sa position par SMS."
+                android:textAlignment="center"
+                android:textColor="#6B7280"
+                android:textSize="14sp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:hint="Numéro de téléphone"
+                app:boxCornerRadiusBottomEnd="16dp"
+                app:boxCornerRadiusBottomStart="16dp"
+                app:boxCornerRadiusTopEnd="16dp"
+                app:boxCornerRadiusTopStart="16dp"
+                app:startIconDrawable="@android:drawable/stat_sys_phone_call"
+                app:startIconTint="#6C63FF">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edPhoneNumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="phone"
+                    android:maxLength="15" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnSendNumber"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="20dp"
+                android:text="Envoyer SMS"
+                android:textAllCaps="false"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                app:backgroundTint="#6C63FF"
+                app:cornerRadius="18dp"
+                app:icon="@android:drawable/ic_menu_send"
+                app:iconGravity="textStart"
+                app:iconPadding="10dp" />
+
+            <Button
+                android:id="@+id/btnFetchData"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="FetchData" />
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
 
 </LinearLayout>

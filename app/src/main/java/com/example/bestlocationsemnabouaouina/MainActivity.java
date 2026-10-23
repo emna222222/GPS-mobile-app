@@ -3,6 +3,7 @@ package com.example.bestlocationsemnabouaouina;
 import android.Manifest;
 import android.app.Activity;
 import android.content.pm.PackageManager;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.telephony.SmsManager;
 import android.view.LayoutInflater;
@@ -17,6 +18,8 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.bestlocationsemnabouaouina.databinding.ActivityMainBinding;
+import com.example.tpservicejson.JSONParser;
+import org.json.JSONObject;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -31,6 +34,22 @@ public class MainActivity extends AppCompatActivity {
         LayoutInflater inf = LayoutInflater.from(MainActivity.this);
         binding=ActivityMainBinding.inflate(inf);
         setContentView(binding.getRoot());
+
+        binding.btnFetchData.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                //THREAD
+                Download download= new Download();
+                download.execute();
+
+
+            }
+        });
+
+
+
+
         binding.btnSendNumber.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -93,4 +112,26 @@ public class MainActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
     }
+
+    class Download extends AsyncTask {
+        @Override
+        protected void onPreExecute() {
+
+        }
+
+        @Override
+        protected Object doInBackground(Object[] objects) {
+
+            com.example.tpservicejson.JSONParser parser = new JSONParser();
+            JSONObject response= parser.makeRequest(Utilities.URL_GETALL_POSITIONS);
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Object o) {
+
+        }
+    }
+
+
 }
